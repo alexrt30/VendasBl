@@ -5,11 +5,18 @@
  */
 package view;
 
+import controller.ControllerCliente;
+import java.util.ArrayList;
+import model.ModelCliente;
+
 /**
  *
  * @author alexd
  */
 public class ViewCliente extends javax.swing.JFrame {
+    ControllerCliente controllerCliente = new ControllerCliente();
+    ModelCliente modelCliente = new ModelCliente();
+    ArrayList<ModelCliente> listaModelCliente = new ArrayList<>();
 
     /**
      * Creates new form ViewCliente
@@ -92,10 +99,7 @@ public class ViewCliente extends javax.swing.JFrame {
 
         jtCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Codigo:", "Nome do cliente:", "Cidade:", "Telefone:"
@@ -214,6 +218,11 @@ public class ViewCliente extends javax.swing.JFrame {
 
         jbSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/accept.png"))); // NOI18N
         jbSalvar.setText("Salvar");
+        jbSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalvarActionPerformed(evt);
+            }
+        });
 
         jbAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/wrench.png"))); // NOI18N
         jbAlterar.setText("Alterar");
@@ -267,6 +276,16 @@ public class ViewCliente extends javax.swing.JFrame {
     private void jtfCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfCodigoActionPerformed
+
+    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
+        // TODO add your handling code here:
+        modelCliente.setCli_Nome(this.jtfNome.getText());
+        modelCliente.setCli_Endereco(this.jtfEndereco.getText());
+        modelCliente.setCli_Bairro(this.jtfBairro.getText());
+        modelCliente.setCli_Telefone(this.jtfTelefone.getText());
+        modelCliente.setCli_Cep(this.jtfCEP.getText());
+
+    }//GEN-LAST:event_jbSalvarActionPerformed
 
     /**
      * @param args the command line arguments
